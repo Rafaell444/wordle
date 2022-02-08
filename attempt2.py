@@ -5,7 +5,7 @@ print("""_______________________________________________________________________
         წარმოგიდგენთ თამაშის რეპლიკას - WORDLE.
 _________________________________________________________________________________________________
         Rules: 
-        
+
         გამოცნობის გასაადვილებლად სისტემას გამოაქვს ფერები:  მწვანე - სწორ პოზიციაზე მყოფი ასო,
                                                              ყვითელი - არასწორ პოზიციაზე,
                                                              ნაცრისფერი - არარსებული ასო.
@@ -31,30 +31,45 @@ print(word_to_guess)
 
 temp = 0
 while temp != 6:
-    inp = input("შეიყვანეთ სიტყვა: ")
+    inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
-    # indexing
+    # needstobesorted = []
+    # for letter in inp:
+    #     if letter in word_to_guess:
+    #         needstobesorted.append(letter)
+    #         sorted_list = list(dict.fromkeys(needstobesorted))
+    #         to_str = " ".join(map(str, sorted_list))
+    #         print(to_str)
+    #
+
     zero = inp[0]
     first = inp[1]
     second = inp[2]
     third = inp[3]
     fourth = inp[4]
 
-    sia = [zero, first, second, third, fourth]
-    notneeded = []
+    listofindex = [zero, first, second, third, fourth]
 
-    for each2 in word_to_guess:
-        for each3 in sia:
-            if each2 == each3:
-                print(each3, "არის მწვანე")
 
-    if len(inp) <= 5:
-        for i in inp:
-            for letter in word_to_guess:
-                if i == letter:
-                    print(i, "არის ყვითელი ")
+    def isgrey():
+        sia = []
+        alreadysorted = list(''.join(set(word_to_guess)))
+        for letter in inp:
+            if letter not in alreadysorted:
+                sia.append(letter)
+        sd = list(dict.fromkeys(sia))
+        for one in sd:
+            print(one, "is grey")
 
-    else:
-        print("მაქსიმუმ 5 ასოიანი სიტყვა!!!,ერთი ცდით ნაკლები გაქვს :) ")
-        temp += 1
+
+    isgrey()
+
+
+    def isgreen():
+        lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
+        for g in lst:
+            for t in g:
+                print(g, "is green")
+    isgreen()
+
