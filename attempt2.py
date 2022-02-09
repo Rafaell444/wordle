@@ -34,42 +34,35 @@ while temp != 6:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
-    # needstobesorted = []
-    # for letter in inp:
-    #     if letter in word_to_guess:
-    #         needstobesorted.append(letter)
-    #         sorted_list = list(dict.fromkeys(needstobesorted))
-    #         to_str = " ".join(map(str, sorted_list))
-    #         print(to_str)
-    #
-
-    zero = inp[0]
-    first = inp[1]
-    second = inp[2]
-    third = inp[3]
-    fourth = inp[4]
-
-    listofindex = [zero, first, second, third, fourth]
+    if len(inp) == 5:
+        if inp != word_to_guess:
+            def isgrey():
+                sia = []
+                already_sorted = list(''.join(set(word_to_guess)))
+                for letter in inp:
+                    if letter not in already_sorted:
+                        sia.append(letter)
+                sd = list(dict.fromkeys(sia))
+                for one in sd:
+                    print(one, "is grey")
 
 
-    def isgrey():
-        sia = []
-        alreadysorted = list(''.join(set(word_to_guess)))
-        for letter in inp:
-            if letter not in alreadysorted:
-                sia.append(letter)
-        sd = list(dict.fromkeys(sia))
-        for one in sd:
-            print(one, "is grey")
+            isgrey()
 
 
-    isgrey()
+            def is_green():
+                lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
+                for g in lst:
+                    print(g, "is green")
 
 
-    def isgreen():
-        lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
-        for g in lst:
-            for t in g:
-                print(g, "is green")
-    isgreen()
+            is_green()
 
+        else:
+            temp = 6
+            print(f"სწორია!,გამოსაცნობი სიტყვა იყო: {word_to_guess}")
+
+    else:
+        fake_len = len(inp)
+        temp = 6
+        print("სიტყვა უნდა შედგებოდეს 5 ასოსგან,თქვენი სიტყვა კი შედგება {} ასოსგან!".format(fake_len))
