@@ -5,7 +5,7 @@ print("""_______________________________________________________________________
         წარმოგიდგენთ თამაშის რეპლიკას - WORDLE.
 _________________________________________________________________________________________________
         Rules: 
-        
+
         გამოცნობის გასაადვილებლად სისტემას გამოაქვს ფერები:  მწვანე - სწორ პოზიციაზე მყოფი ასო,
                                                              ყვითელი - არასწორ პოზიციაზე,
                                                              ნაცრისფერი - არარსებული ასო.
@@ -27,56 +27,69 @@ with open("Ka2.txt", "r") as f:
     words = list(map(str, wholetext.split()))
 
 word_to_guess = random.choice(words)
-print(word_to_guess)
+# print(word_to_guess)
+
 
 temp = 0
 while temp != 6:
-    inp = input("შეიყვანეთ სიტყვა: ")
+    inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
-    # indexing
-    zero = inp[0]
-    first = inp[1]
-    second = inp[2]
-    third = inp[3]
-    fourth = inp[4]
+    fake = True
 
-    sia = [zero, first, second, third, fourth]
-    notneeded = []
+    if len(inp) == 5:
+        if inp != word_to_guess:
+            sia1 = []
 
-    for each2 in word_to_guess:
-        for each3 in sia:
-            if each2 == each3:
-                print(each3, "არის მწვანე")
 
-    if len(inp) <= 5:
-        for i in inp:
-            for letter in word_to_guess:
-                if i == letter:
-                    print(i, "არის ყვითელი ")
+            def is_grey():
+
+                already_sorted = list(''.join(set(word_to_guess)))
+                for letter in inp:
+                    if letter not in already_sorted:
+                        sia1.append(letter)
+                sd = list(dict.fromkeys(sia1))
+                for one in sd:
+                    print(one, "is grey")
+
+
+            is_grey()
+
+
+            def is_green():
+                for num in range(len(inp)):
+                    if inp[num] == word_to_guess[num]:
+                        print(inp[num], "is green")
+
+
+            is_green()
+
+
+            def is_yellow():
+                sia = []
+                for letter in inp:
+                    if letter in word_to_guess:
+                        for num in range(len(inp)):
+                            if inp[num] != word_to_guess[num]:
+                                sia.append(inp[num])
+                without_dublicates = list(dict.fromkeys(sia))
+                for each in without_dublicates:
+                    if each not in sia1:
+                        print(each, "is Yellow")
+
+
+            is_yellow()
+
+        else:
+            fake = False
+            temp = 6
+            print(f"სწორია!,გამოსაცნობი სიტყვა იყო: {word_to_guess}")
 
     else:
-        print("მაქსიმუმ 5 ასოიანი სიტყვა!!!,ერთი ცდით ნაკლები გაქვს :) ")
-        temp += 1
+        fake = False
+        fake_len = len(inp)
+        temp = 6
+        print("სიტყვა უნდა შედგებოდეს 5 ასოსგან,თქვენი სიტყვა კი შედგება {} ასოსგან!".format(fake_len))
 
-# def is_green():
-#     lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
-#     for g in lst:
-#         for t in g:
-#             print(g, "is green")
-#
-#
-# is_green()
-#
-
-
-#
-# def is_yellow():
-#     lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
-#     for letter in inp:
-#         if letter in word_to_guess:
-#             if letter not in lst:
-#                 print(letter, "is yellow")
-#     print(lst)
-#
-# is_yellow()
+    if temp == 6 and fake is True:
+        print("სამწუხაროდ თქვენ წააგეთ")
