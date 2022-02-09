@@ -58,3 +58,25 @@ while temp != 6:
     else:
         print("მაქსიმუმ 5 ასოიანი სიტყვა!!!,ერთი ცდით ნაკლები გაქვს :) ")
         temp += 1
+
+# def is_green():
+#     lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
+#     for g in lst:
+#         for t in g:
+#             print(g, "is green")
+#
+#
+# is_green()
+#
+
+
+#
+# def is_yellow():
+#     lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
+#     for letter in inp:
+#         if letter in word_to_guess:
+#             if letter not in lst:
+#                 print(letter, "is yellow")
+#     print(lst)
+#
+# is_yellow()

@@ -34,35 +34,62 @@ while temp != 6:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
+    fake = True
+
     if len(inp) == 5:
         if inp != word_to_guess:
-            def isgrey():
-                sia = []
+            sia1 = []
+
+
+            def is_grey():
+
                 already_sorted = list(''.join(set(word_to_guess)))
                 for letter in inp:
                     if letter not in already_sorted:
-                        sia.append(letter)
-                sd = list(dict.fromkeys(sia))
+                        sia1.append(letter)
+                sd = list(dict.fromkeys(sia1))
                 for one in sd:
                     print(one, "is grey")
 
 
-            isgrey()
+            is_grey()
 
 
             def is_green():
-                lst = list(set([let for let in set(inp) if let in set(word_to_guess)]))
-                for g in lst:
-                    print(g, "is green")
+                for num in range(len(inp)):
+                    if inp[num] == word_to_guess[num]:
+                        print(inp[num], "is green")
 
 
             is_green()
 
+
+            def is_yellow():
+                sia = []
+                for letter in inp:
+                    if letter in word_to_guess:
+                        for num in range(len(inp)):
+                            if inp[num] != word_to_guess[num]:
+                                sia.append(inp[num])
+                without_dublicates = list(dict.fromkeys(sia))
+                for each in without_dublicates:
+                    if each not in sia1:
+                        print(each, "is Yellow")
+
+
+            is_yellow()
+
+
         else:
+            fake = False
             temp = 6
             print(f"სწორია!,გამოსაცნობი სიტყვა იყო: {word_to_guess}")
 
     else:
+        fake = False
         fake_len = len(inp)
         temp = 6
         print("სიტყვა უნდა შედგებოდეს 5 ასოსგან,თქვენი სიტყვა კი შედგება {} ასოსგან!".format(fake_len))
+
+    if temp == 6 and fake is True:
+        print("სამწუხაროდ თქვენ წააგეთ")
