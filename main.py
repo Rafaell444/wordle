@@ -1,5 +1,7 @@
 import random
 
+# from colorama import Fore
+
 print("""_________________________________________________________________________________________________
 
         წარმოგიდგენთ თამაშის რეპლიკას - WORDLE.
@@ -34,7 +36,11 @@ yellow = []
 green = []
 
 temp = 0
-while temp != 6:
+
+style = input(
+    "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
+
+while temp:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
@@ -104,6 +110,16 @@ while temp != 6:
     else:
         print(f"{inp} - ასეთი სიტყვა არ არსებობს ან არ არის ბაზაში,გთხოვთ ცადოთ სხვა !", )
         temp += 1
+
+    # for gr in green:
+    #     for yl in yellow:
+    #         for gry in grey:
+    #             if gr in inp:
+    #                 grlet = Fore.GREEN + f"{gr}"
+    #             elif yl in inp:
+    #                 yllet = Fore.YELLOW + f"{yl}"
+    #             elif gry in inp:
+    #                 grylet = Fore.LIGHTBLUE_EX + f"{gry}"  # ნაცრისფერი არ აქვს ამ ბიბლიოთეკას
 
 
 def main():
