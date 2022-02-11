@@ -1,6 +1,6 @@
 import random
 
-# from colorama import Fore
+from colorama import Fore
 
 print("""_________________________________________________________________________________________________
 
@@ -34,13 +34,14 @@ word_to_guess = random.choice(words)
 grey = []
 yellow = []
 green = []
+last_answer = []
 
 temp = 0
 
-style = input(
-    "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
+# style = input(
+#     "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
 
-while temp:
+while temp != 6:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
@@ -60,7 +61,7 @@ while temp:
                     sd = list(dict.fromkeys(sia1))
                     for one in sd:
                         grey.append(one)
-                        print(one, "is grey")
+                        # print(one, "is grey")
 
 
                 is_grey()
@@ -70,7 +71,7 @@ while temp:
                     for num in range(len(inp)):
                         if inp[num] == word_to_guess[num]:
                             green.append(inp[num])
-                            print(inp[num], "is green")
+                            # print(inp[num], "is green")
 
 
                 is_green()
@@ -87,7 +88,7 @@ while temp:
                     for each in without_dublicates:
                         if each not in sia1:
                             yellow.append(each)
-                            print(each, "is Yellow")
+                            # print(each, "is Yellow")
 
 
                 is_yellow()
@@ -111,15 +112,32 @@ while temp:
         print(f"{inp} - ასეთი სიტყვა არ არსებობს ან არ არის ბაზაში,გთხოვთ ცადოთ სხვა !", )
         temp += 1
 
-    # for gr in green:
-    #     for yl in yellow:
-    #         for gry in grey:
-    #             if gr in inp:
-    #                 grlet = Fore.GREEN + f"{gr}"
-    #             elif yl in inp:
-    #                 yllet = Fore.YELLOW + f"{yl}"
-    #             elif gry in inp:
-    #                 grylet = Fore.LIGHTBLUE_EX + f"{gry}"  # ნაცრისფერი არ აქვს ამ ბიბლიოთეკას
+
+    def color_answer():  #მუშაობს მაგრამ ბოლომდე სწორად არა
+        for letter in inp:
+            if letter in yellow:
+                yel = Fore.YELLOW + f'{letter}'
+                last_answer.append(yel)
+                # print(yel)
+            if letter in grey:
+                gry = Fore.LIGHTBLUE_EX + f"{letter}"
+                last_answer.append(gry)
+                # print(gry)
+            if letter in green:
+                grn = Fore.GREEN + f"{letter}"
+                last_answer.append(grn)
+                # print(grn)
+
+        ans = ""
+        for each1 in last_answer:
+            ans += each1
+
+        print(ans)
+
+        del last_answer[:]
+
+
+    color_answer()
 
 
 def main():
