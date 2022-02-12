@@ -38,10 +38,21 @@ last_answer = []
 
 temp = 0
 
-# style = input(
-#     "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
+style = input(
+    "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
 
-while temp != 6:
+atr = None
+
+if int(style) == 1:
+    atr = True
+elif int(style) == 2:
+    atr = 8
+elif int(style) == 3:
+    atr = 6
+elif int(style) == 4:
+    atr = 4
+print(atr)
+while temp != atr:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
 
@@ -95,16 +106,18 @@ while temp != 6:
 
             else:
                 fake = False
-                temp = 6
+                temp = atr
                 print(f"სწორია!,გამოსაცნობი სიტყვა იყო: {word_to_guess}")
 
         else:
             fake = False
             fake_len = len(inp)
-            temp = 6
+            temp = atr
             print("სიტყვა უნდა შედგებოდეს 5 ასოსგან,თქვენი სიტყვა კი შედგება {} ასოსგან!".format(fake_len))
 
-        if temp == 6 and fake is True:
+        if temp is True and fake is True:
+            pass
+        elif (temp is not True) and (temp == atr) and (fake is True):
             print("სამწუხაროდ თქვენ წააგეთ")
             print("ჩაფიქრებული სიტყვა იყო - {}".format(word_to_guess))
 
@@ -113,7 +126,8 @@ while temp != 6:
         temp += 1
 
 
-    def color_answer():  #მუშაობს მაგრამ ბოლომდე სწორად არა
+    def color_answer():
+        # მუშაობს მაგრამ ბოლომდე სწორად არა
         for letter in inp:
             if letter in yellow:
                 yel = Fore.YELLOW + f'{letter}'
