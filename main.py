@@ -51,7 +51,7 @@ elif int(style) == 3:
     atr = 6
 elif int(style) == 4:
     atr = 4
-print(atr)
+
 while temp != atr:
     inp = input("შეიყვანე სიტყვა: ")
     temp += 1
