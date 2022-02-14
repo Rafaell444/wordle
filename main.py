@@ -42,6 +42,15 @@ style = input(
     "აირჩიეთ თამაშის ტიპი :  საბავშვო - 1 , გამარტივებული - 2 , კლასიკური - 3 , ვერტიკალურად გართულებული - 4 :  ")
 
 atr = None
+#
+# if int(style) == 2:
+#     atr = 8
+# elif int(style) == 3:
+#     atr = 6
+# elif int(style) == 4:
+#     atr = 4
+#
+# while [True if style == 1 else temp != atr]:
 
 if int(style) == 1:
     atr = True
